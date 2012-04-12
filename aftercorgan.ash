@@ -1,17 +1,29 @@
 /*
-   Wole's aftercore organ script
-   This will start and finish the Steel organ quest. It can buy stuff in mall. It will most probably
-   do weird stuff if you start it midquest.    
+**Wole's aftercore Steel Organ Script**
+
+http://kolmafia.us/showthread.php?t=
+This is meant for aftercore, but could in theory be used in-run. 
+Settings are useMall = true/false
 */
+
 script "aftercorgan.ash";
 notify "Wole";
 
-import zlib;
+import <zlib.ash>;
+
+string afterCorganVersion = "0.02";		// This is the script's version!
+
+
+//int Aftercore_PAGE = 9999;
+// check_version("Aftercore", "Aftercore", thisver, Aftercore_PAGE);
+
 
 //Settings
-boolean useMall = true;
+setvar("woleUseMall", true);
 
 //Constants and stuff
+boolean useMall = vars["woleUseMall"].to_boolean();
+
 familiar oldFam = my_familiar();
 familiar itemFam = best_fam("items");
 
