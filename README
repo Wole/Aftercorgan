@@ -4,7 +4,7 @@ Based in part on Azazel.ash by icon315
 
 Place script in kolmafia/scripts. zlib.ash is needed as well. 
 
-There is one setting in the script useMall, which takes true/false. 
+There is one zlib variable woleUseMall, which takes true/false. 
 
 This script will start and finish the Steel Organ Quest
 
