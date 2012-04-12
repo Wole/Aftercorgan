@@ -1,0 +1,6 @@
+This script will start and finish the Steel Organ Quest
+
+The only setting is native in the script; useMall=true/false; 
+It uses lib
+It will switch to best item familiar and outfit
+It will buff +combats/-combats
