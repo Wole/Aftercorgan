@@ -42,7 +42,7 @@ boolean haveItem(item i){
 
 //This checks for Combat modifier skills and casts/shrugs them
 void combatModBuff(string rate){
-	if (rate = "plus") {
+	if (rate == "plus") {
 		if (have_effect($effect[smooth movements]) > 0) {
 			cli_execute("shrug smooth movements");
 		}
@@ -56,7 +56,7 @@ void combatModBuff(string rate){
 			use_skill($skill[cantata]);
 		}
 	}
-	if (rate = "minus") {
+	if (rate == "minus") {
 		if (have_effect($effect[musk]) > 0) {
 			cli_execute("shrug musk");
 		}
@@ -64,7 +64,7 @@ void combatModBuff(string rate){
 			cli_execute("shrug cantata");
 		}
 		if (hasSmooth && have_effect($effect[smooth movements]) == 0){
-			use_skill($skill[smooth movements]);
+			use_skill($skill[smooth movement]);
 		}
 		if (hasSonata && have_effect($effect[sonata of sneakiness]) == 0){
 			use_skill($skill[sonata of sneakiness]);
