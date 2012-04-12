@@ -1,22 +1,20 @@
-/*
-**Wole's aftercore Steel Organ Script**
+//**Wole's aftercore Steel Organ Script**
 
-http://kolmafia.us/showthread.php?t=
-This is meant for aftercore, but could in theory be used in-run. 
-Settings are useMall = true/false
-*/
+//http://kolmafia.us/showthread.php?t=
+//This is meant for aftercore, but could in theory be used in-run. 
+//Settings are useMall = true/false
 
 script "aftercorgan.ash";
 notify "Wole";
 
 import <zlib.ash>;
 
-string afterCorganVersion = "0.02";		// This is the script's version!
+//Script version
+string afterCorganVersion = "0.02";	
 
 
 //int Aftercore_PAGE = 9999;
 // check_version("Aftercore", "Aftercore", afterCorganVersion, Aftercore_PAGE);
-
 
 //Settings
 setvar("woleUseMall", true);
@@ -34,10 +32,10 @@ boolean hasSonata = have_skill($skill[sonata]);
 
 //Want a boolean to check if I have an item. Not really necessary, but makes it cleaner later
 boolean haveItem(item i){
-   if (item_amount(i) >= 1) {
-      return true;
-      }
-   else return false;
+	if (item_amount(i) >= 1) {
+		return true;
+	}
+	else return false;
 }
 
 //This checks for Combat modifier skills and casts/shrugs them
