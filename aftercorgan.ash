@@ -15,7 +15,7 @@ string afterCorganVersion = "0.02";		// This is the script's version!
 
 
 //int Aftercore_PAGE = 9999;
-// check_version("Aftercore", "Aftercore", thisver, Aftercore_PAGE);
+// check_version("Aftercore", "Aftercore", afterCorganVersion, Aftercore_PAGE);
 
 
 //Settings
@@ -38,6 +38,38 @@ boolean haveItem(item i){
       return true;
       }
    else return false;
+}
+
+//This checks for Combat modifier skills and casts/shrugs them
+void combatModBuff(string rate){
+	if (rate = "plus") {
+		if (have_effect($effect[smooth movements]) > 0) {
+			cli_execute("shrug smooth movements");
+		}
+		if (have_effect($effect[Sonata of Sneakiness]) > 0) {
+			cli_execute("shrug Sonata of Sneakiness");
+		}
+		if (hasMusk && have_effect($effect[musk]) == 0){
+			use_skill($skill[musk]);
+		}
+		if (hasCantata && have_effect($effect[cantata]) == 0){
+			use_skill($skill[cantata]);
+		}
+	}
+	if (rate = "minus") {
+		if (have_effect($effect[musk]) > 0) {
+			cli_execute("shrug musk");
+		}
+		if (have_effect($effect[cantata]) > 0) {
+			cli_execute("shrug cantata");
+		}
+		if (hasSmooth && have_effect($effect[smooth movements]) == 0){
+			use_skill($skill[smooth movements]);
+		}
+		if (hasSonata && have_effect($effect[sonata of sneakiness]) == 0){
+			use_skill($skill[sonata of sneakiness]);
+		}
+	}
 }
 
 //This runs adventures
@@ -102,19 +134,8 @@ void giveToGolly(item i, string who){
 void comedyClub() {
    maximize("item", false);
    print("Trying to get Observational Glasses", "blue");
-   if (have_effect($effect[smooth movements]) > 0) {
-      cli_execute("shrug smooth movements");
-   }
-   if (have_effect($effect[Sonata of Sneakiness]) > 0) {
-      cli_execute("shrug Sonata of Sneakiness");
-   }
    while(item_amount($item[Observational glasses]) == 0) {
-      if (hasMusk && have_effect($effect[musk]) == 0){
-         use_skill($skill[musk]);
-      }
-      if (hasCantata && have_effect($effect[cantata]) == 0){
-         use_skill($skill[cantata]);
-      }
+   combatModBuff("plus");
    runAdv($location[Belilafs Comedy Club]);
    }
    equip($slot[acc3], $item[Observational glasses]);
@@ -130,20 +151,10 @@ void comedyClub() {
 void arena() {
    maximize("item",false);
    print("Trying to get stuff for musicians", "blue");
-   if (have_effect($effect[musk]) > 0) {
-      cli_execute("shrug musk");
-   }
-   if (have_effect($effect[cantata]) > 0) {
-      cli_execute("shrug cantata");
-   }
+   
 //Gather the non-com drops until you can finish it
    while (!gollyDone()) {
-      if (hasSmooth && have_effect($effect[smooth movements]) == 0){
-         use_skill($skill[smooth]);
-      }
-      if (hasSonata && have_effect($effect[sonata of sneakiness]) == 0){
-         use_skill($skill[sonata of sneakiness]);
-      }
+      combatModBuff("minus");
       runAdv($location[Hey Deze Arena]);
    }
 //Give the items to the musicians
