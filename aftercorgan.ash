@@ -115,7 +115,7 @@ boolean gollyDone() {
    int bo = item_amount($item[booze-soaked cherry]);
    int sp = item_amount($item[sponge cake]);
    int co = item_amount($item[comfy pillow]);
-   if ((ma + gi + be) == 2 && (bo + sp + co) == 2) {
+   if ((ma + gi + be) >= 2 && (bo + sp + co) >= 2) {
       return true;
    }
    else return false;
@@ -193,14 +193,20 @@ void pandaSquare() {
    print("Panda Square done", "blue");
 }
 
-//This switches to an +’tem fam, runs everything, and gathers the steel organ
+//This switches to a +item fam, runs everything, and gathers the steel organ
 void main(){
    print("Let's go!", "blue");
    visit_url("pandamonium.php");
    use_familiar(itemFam);
+if (item_amount($item[azazel's lollipop]) == 0) {	
    comedyClub();
-   arena();
+}
+if (item_amount($item[azazel's unicorn]) == 0) {
+arena();
+}
+if (item_amount($item[azazel's tutu]) == 0) {
    pandaSquare();
+}
    visit_url("pandamonium.php?action=temp");
    use_familiar(oldFam);
    print("Hopefully we're done now, don't forget to drink your steel margarita!", "green");
